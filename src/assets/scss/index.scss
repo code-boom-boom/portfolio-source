@@ -1,0 +1,119 @@
+@import "./fonts.scss";
+@import "./variables.scss";
+
+.app-layout {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+
+    .left-sidebar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: $left-sidebar-width;
+        height: 100vh;
+        transform: translateX(-100%);
+        z-index: 1;
+        transition: 0.5s;
+
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
+
+        &.open {
+            transform: translateX(0);
+        }
+
+        .skill-container {
+            max-height: calc(100vh - 408px);
+        }
+
+        .close-btn {
+            top: -8px;
+            right: -24px;
+        }
+    }
+
+    .right-sidebar-container {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: $right-sidebar-width;
+        height: 100vh;
+        transform: translateX(100%);
+        z-index: 1;
+        transition: 0.5s;
+
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
+
+        .right-sidebar-wrapper {
+            display: grid;
+            grid-template-rows: 24px 1fr;
+        }
+
+        &.open {
+            transform: translateX(0);
+        }
+    }
+
+    .mobile-header-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: $header-height;
+        transform: translateY(0);
+        transition: 0.5s;
+
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
+    }
+
+    .page-container {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: $header-height;
+        bottom: 0;
+        transition: 0.5s;
+    }
+
+    .detail-modal {
+        width: 80%;
+        
+        .detail-wrapper {
+            max-height: 70vh;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        .right-sidebar-container {
+            transform: translateX(0);
+        }
+
+        .left-sidebar-container {
+            transform: translateX(0);
+        }
+
+        .mobile-header-container {
+            transform: translateY(-100%);
+            box-shadow: none;
+        }
+
+        .page-container {
+            top: 0;
+            left: $left-sidebar-width;
+            right: $right-sidebar-width;
+        }
+    }
+}
+
+.simplebar-track {
+    right: -8px !important;
+    width: 8px !important;
+}
+
+.slick-prev::before, .slick-next::before {
+    color: gray
+}
+
+.simplebar-offset {
+    right: 0 !important;
+}
